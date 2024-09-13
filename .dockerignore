@@ -1,0 +1,66 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# General
+README.md
+*.log
+*.md
+
+# Rails specific
+backend/tmp
+backend/log
+backend/.bundle
+backend/vendor/bundle
+backend/public/assets
+backend/public/packs
+backend/public/packs-test
+backend/node_modules
+backend/yarn-error.log
+backend/storage
+backend/test
+backend/spec
+
+# Flask specific
+ai/__pycache__
+ai/*.pyc
+ai/*.pyo
+ai/*.pyd
+ai/.Python
+ai/env
+ai/venv
+ai/.env
+ai/.flaskenv
+ai/instance
+
+# Vite/Frontend specific
+frontend/node_modules
+frontend/dist
+frontend/.cache
+frontend/coverage
+frontend/.env
+frontend/.env.*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

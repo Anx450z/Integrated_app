@@ -1,0 +1,51 @@
+# General
+.DS_Store
+*.log
+*.swp
+.idea/
+.vscode/
+
+# Rails
+/backend/.bundle
+/backend/log/*
+/backend/tmp/*
+!/backend/log/.keep
+!/backend/tmp/.keep
+/backend/storage/*
+!/backend/storage/.keep
+/backend/tmp/storage/*
+!/backend/tmp/storage/.keep
+/backend/public/assets
+/backend/.byebug_history
+/backend/config/master.key
+/backend/config/credentials/*.key
+/backend/public/packs
+/backend/public/packs-test
+
+# Flask
+/ai/__pycache__/
+/ai/*.py[cod]
+/ai/*$py.class
+/ai/.Python
+/ai/env/
+/ai/venv/
+/ai/.env
+/ai/.flaskenv
+/ai/instance/
+/ai/.webassets-cache
+
+# Vite/Frontend
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.cache/
+/frontend/.env
+/frontend/.env.*
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Docker
+docker-compose.override.yml
+
+# Database
+*.sqlite3

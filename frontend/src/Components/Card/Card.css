@@ -1,0 +1,59 @@
+.license-card {
+  width: 320px;
+  height: 220px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  background-color: #ffffff;
+  color: rgb(29, 69, 122);
+  padding: 10px;
+  text-align: center;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.card-body {
+  flex-grow: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.card-label {
+  font-size: 12px;
+  color: #445c73;
+}
+
+.card-value {
+  font-size: 12px;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+}
+
+.card-footer {
+  background-color: #eff1fc;
+  padding: 10px 15px;
+  font-size: 10px;
+  text-align: left;
+  color: #445c73;
+}

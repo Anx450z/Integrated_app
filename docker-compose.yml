@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # db:
+  #   image: postgres:13
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   environment:
+  #     POSTGRES_PASSWORD: password
+
+  redis:
+    image: redis:6.2-alpine
+    volumes:
+      - redis_data:/data
+
+  # rails_app:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   command: /app/setup.sh
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./backend:/app
+  #   depends_on:
+  #     - db
+  #     - redis
+  #   environment:
+  #     - RAILS_ENV=development
+  #     - REDIS_URL=redis://redis:6379
+
+  flask_app:
+    build:
+      context: ./ai
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./ai:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+    depends_on:
+      - redis
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://loacalhost:5000
+    depends_on:
+      - flask_app
+
+volumes:
+  # postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: myapp_network

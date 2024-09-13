@@ -1,0 +1,24 @@
+# Use an official Node runtime as a parent image
+FROM node:20
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the current directory contents into the container
+COPY . .
+
+# Install a simple http server for serving static content
+RUN npm install -g http-server
+
+# Make port 5173 available to the world outside this container
+EXPOSE 5173
+
+# Run the app when the container launches
+CMD ["npm", "run", "dev", "--", "--host"]
+
