@@ -12,6 +12,8 @@ services:
     image: redis:6.2-alpine
     volumes:
       - redis_data:/data
+    networks:
+      - app-network
 
   # rails_app:
   #   build:
@@ -43,6 +45,8 @@ services:
       - FLASK_RUN_HOST=0.0.0.0
     depends_on:
       - redis
+    networks:
+      - app-network
 
   frontend:
     build:
@@ -57,11 +61,13 @@ services:
       - VITE_API_URL=http://loacalhost:5000
     depends_on:
       - flask_app
+    networks:
+      - app-network
 
 volumes:
   # postgres_data:
   redis_data:
 
 networks:
-  default:
-    name: myapp_network
+  app-network:
+      driver: bridge

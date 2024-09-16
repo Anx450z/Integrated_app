@@ -118,20 +118,27 @@ function App() {
   async function parseToJson() {
     if (!pdfFile) return;
     setJsonData(null);
-    const domain = `${apiUrl}/parse_json`;
-    const documentPathParams =
-      '?doc_url=/home/ankur/Downloads/Nanonets_data/Documents for bulk parsing test/Documents for bulk parsing test /';
-    const parseMethodParams = `&parse_method=${method}`;
-    const llmModelParam = `&llm_model=${llmModel}`;
-    const blockedPagesParam = `&blocked_pages=${blockedPagesHash.get(pdfFile.name) || ''}`;
-
+    const domain = 'http://localhost:5000/parse_json';
+  
+    const formData = new FormData();
+    formData.append('file', pdfFile);
+    formData.append('parse_method', method);
+    formData.append('llm_model', llmModel);
+    formData.append('blocked_pages', blockedPagesHash.get(pdfFile.name) || '');
+  
     setLoading(true);
     try {
-      const response = await fetch(
-        `${domain + documentPathParams + pdfFile.name + parseMethodParams + llmModelParam + blockedPagesParam}`
-      );
+      const response = await fetch(domain, {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
       const data = await response.json();
-
+  
       setLoading(false);
       setJsonData(JSON.stringify(data, null, 2));
       setParsedFiles([...parsedFiles, pdfFile.name]);
