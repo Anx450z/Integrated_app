@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15
@@ -62,7 +60,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - VITE_API_URL=http://loacalhost:5000
+      - VITE_API_URL=http://localhost:5000
     depends_on:
       - flask_app
     networks:

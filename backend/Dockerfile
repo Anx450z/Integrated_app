@@ -19,5 +19,7 @@ COPY . .
 # Entrypoint prepares the database.
 ENTRYPOINT ["/app/bin/docker-entrypoint"]
 
+EXPOSE 3000
+
 # Start the server by default, this can be overwritten at runtime
-CMD ["./bin/rails", "server"]
+CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
