@@ -27,9 +27,10 @@ def generate_report(prompt):
     return response.text
 
 @time_it
-def generate_from_pdf(prompt, pdf_file):
+def generate_from_pdf(prompt, file_path, blocked_pages):
     print("Uploading file...")
-    genai.upload_file(pdf_file)
+    pdf_file = genai.upload_file(file_path)
     print("Generating response...")
     response = llm.generate_content([prompt, pdf_file])
+    pdf_file.delete()
     return response.text

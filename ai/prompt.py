@@ -1,6 +1,6 @@
 def prompt():
   output_format = f"""
-  [{{user: <Name of the user if available. If not then provide null.>
+  [{{user: <Name of the user to whom certificate is awarded if available. If not then provide null.>
   course_name: <Name of the course, it may also contain course code.>
   provider: <Provider institute or authority of the certificate, if not present then provide null.>
   credits: <CME or completed credits or acquired credits or hours completed by the user are present for each course. It is always a number. Do not use maximum credit>
@@ -24,7 +24,7 @@ def prompt():
 def text_prompt(text):
   output_format = f"""
   [{{
-  user: <Name of the user if available. If not then provide null.>
+  user: <Name of the user to whom certificate is awarded if available. If not then provide null.>
   course_name: <Name of the course, it may also contain course code.>
   provider: <Provider institute or authority of the certificate, if not present then provide null.>
   credits: <CME or completed credits or acquired credits or hours completed by the user are present for each course. It is always a number. Do not use maximum credit>

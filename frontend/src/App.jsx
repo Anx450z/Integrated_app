@@ -35,7 +35,7 @@ function App() {
   const [jsonData, setJsonData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [method, setMethod] = useState('pdf_to_json');
-  const [llmModel, setLlmModel] = useState('openai');
+  const [llmModel, setLlmModel] = useState('gemini');
   const [status, setStatus] = useState('');
   const [historyStatus, setHistoryStatus] = useState(true);
   const [fileHistory, setFileHistory] = useState([]);
@@ -357,12 +357,10 @@ function App() {
                 <p className="llm-model">LLM</p>
               </div>
               <select className="dropdown" value={llmModel} onChange={(e) => setLlmModel(e.target.value)}>
-                <option value="openai">Open AI</option>
                 <option value="gemini">Gemini</option>
-                <option value="ollama">Ollama</option>
-                <option value="anthropic" disabled>
-                  Anthropic
-                </option>
+                <option value="openai">Open AI</option>
+                <option value="ollama" disabled>Ollama</option>
+                <option value="anthropic" disabled>Anthropic</option>
               </select>
             </div>
             <div className="linear">
